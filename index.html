@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MSKH Wine - Taste of Armenia</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="header-container">
+            <a href="#" class="logo-box" onclick="navigateTo('home'); return false;">
+                <img src="./images/logo — копия.png" alt="MSKH Logo" class="logo-img">
+            </a>
+        
+            <nav class="main-nav">
+                <a href="#" id="nav-home" class="nav-link active" onclick="document.querySelectorAll('.main-nav .nav-link').forEach(l=>l.classList.remove('active')); this.classList.add('active'); navigateTo('home'); return false;" data-i18n="nav-main">Main</a>
+                <a href="#" id="nav-shop" class="nav-link" onclick="document.querySelectorAll('.main-nav .nav-link').forEach(l=>l.classList.remove('active')); this.classList.add('active'); navigateTo('shop'); return false;" data-i18n="nav-shop">Shop</a>
+                <a href="#" id="nav-wines" class="nav-link" onclick="document.querySelectorAll('.main-nav .nav-link').forEach(l=>l.classList.remove('active')); this.classList.add('active'); navigateTo('wines'); return false;" data-i18n="nav-wines">Wines</a>
+                <a href="#" id="nav-about" class="nav-link" onclick="document.querySelectorAll('.main-nav .nav-link').forEach(l=>l.classList.remove('active')); this.classList.add('active'); navigateTo('about'); return false;" data-i18n="nav-about">About</a>
+                
+                <a href="https://eduwinemskh.wordpress.com/%d5%a3%d5%ab%d5%b6%d5%b8%d6%82-%d5%a4%d5%ba%d6%80%d5%b8%d6%81%d5%ab-%d5%ba%d5%a1%d5%bf%d5%b4%d5%b8%d6%82%d5%a9%d5%b5%d5%b8%d6%82%d5%b6%d5%a8/" 
+                   target="_blank" 
+                   id="nav-blog" 
+                   class="nav-link" 
+                   data-i18n="nav-blog">Blog</a>
+            
+                <a href="#" id="nav-contact" class="nav-link" onclick="document.querySelectorAll('.main-nav .nav-link').forEach(l=>l.classList.remove('active')); this.classList.add('active'); navigateTo('contact'); return false;" data-i18n="nav-contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <div id="order-notification" class="order-popup-overlay">
+        <div class="order-popup-content">
+            <div class="popup-icon-box">
+                <i class="fa-solid fa-phone-volume"></i>
+            </div>
+            <h3 data-i18n="order-title">Place an Order</h3>
+            <p class="popup-text" data-i18n="order-desc">To ensure your order is processed, please contact us directly by phone:</p>
+            <a href="tel:+37410740022" class="popup-phone-link">+374 10 740022</a>
+            <p class="popup-note" data-i18n="order-hours">We are open Mon – Fri, from 9:00 to 18:00</p>
+            <button class="btn-popup-close" onclick="closeOrderPopup()" data-i18n="btn-close">Close</button>
+        </div>
+    </div>
+
+    <main class="content-wrapper">
+
+        <!-- MAIN / MENU -->
+        <section id="section-home" class="site-section active">
+            <div class="hero-container">
+                <div class="hero-text-block">
+                    <h1 class="hero-title">Taste of Armenia</h1>
+                    <p class="hero-subtitle">Discover handcrafted Armenian wines, rich in heritage and tradition.</p>
+                    <button class="btn-primary" onclick="navigateTo('shop')">Explore Our Wines</button>
+                </div>
+                <div class="hero-image-block">
+                    <img src="./images/heroimg — .png" alt="Armenian Wine" class="hero-img">
+                </div>
+            </div>
+        </section>
+
+        <!-- SHOP (ПОЛНОСТЬЮ БЕЗ СОРТИРОВКИ) -->
+        <section id="section-shop" class="site-section">
+            <div class="shop-page-title">
+                <h1>Shop</h1>
+                <p>Discover our carefully selected wines.</p>
+            </div>
+            
+            <div class="shop-layout">
+                <aside class="shop-sidebar">
+                    <div class="filter-group">
+                        <h3 class="filter-title">Categories</h3>
+                        <ul class="category-list">
+                            <li class="category-item active" data-category="all">All Wines</li>
+                            <li class="category-item" data-category="red">Red Wine</li>
+                            <li class="category-item" data-category="white">White Wine</li>
+                            <li class="category-item" data-category="rose">Rosé Wine</li>
+                        </ul>
+                    </div>
+                </aside>
+
+                <div class="shop-content">
+                    <div class="products-grid" id="wines-grid">
+                        <div class="product-card" data-wine-type="red" data-price="44.00" onclick="openProduct('Red Dry Wine 0.75L', '44.00')">
+                            <div class="card-img-wrapper">
+                                <img src="./images/Red Dry wine.png" alt="Red Dry Wine" class="card-bottle-img">
+                            </div>
+                            <h4 class="product-name">Red Dry Wine 0.75L</h4>
+                            <div class="product-rating">
+                                <span class="stars">★★★★★</span>
+                                <span class="reviews-count">18 reviews</span>
+                            </div>
+                            <div class="product-price">$44.00</div>
+                        </div>
+
+                        <div class="product-card" data-wine-type="white" data-price="34.00" onclick="openProduct('White Dry Wine 0.75L', '34.00')">
+                            <div class="card-img-wrapper">
+                                <img src="./images/White wine.png" alt="White Dry Wine" class="card-bottle-img">
+                            </div>
+                            <h4 class="product-name">White Dry Wine 0.75L</h4>
+                            <div class="product-rating">
+                                <span class="stars">★★★★★</span>
+                                <span class="reviews-count">12 reviews</span>
+                            </div>
+                            <div class="product-price">$34.00</div>
+                        </div>
+
+                        <div class="product-card" data-wine-type="rose" data-price="29.00" onclick="openProduct('Rosé Wine 0.75L', '29.00')">
+                            <div class="card-img-wrapper">
+                                <img src="./images/Rose Wine.png" alt="Rosé Wine" class="card-bottle-img">
+                            </div>
+                            <h4 class="product-name">Rosé Wine 0.75L</h4>
+                            <div class="product-rating">
+                                <span class="stars">★★★★★</span>
+                                <span class="reviews-count">9 reviews</span>
+                            </div>
+                            <div class="product-price">$29.00</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="section-product-detail" class="site-section">
+            <button class="btn-back" onclick="goBack()"><i class="fa-solid fa-arrow-left"></i> Назад</button>
+
+            <div class="detail-container">
+                <div class="detail-left-side">
+                    <h1 id="detail-title" class="detail-main-title">Red Dry Wine 0.75L</h1>
+                    <div class="product-rating margin-bottom-20">
+                        <span class="stars">★★★★★</span>
+                        <span class="reviews-count">| 18 reviews</span>
+                    </div>
+                    
+                    <div class="detail-visual-block">
+                        <img id="detail-img" src="./images/Red Dry wine.png" alt="Selected Wine" class="detail-bottle-img">
+                    </div>
+                </div>
+
+                <div class="detail-right-side">
+                    <div class="tabs-header">
+                        <button class="tab-btn active" onclick="switchDetailTab(event, 'tab-details')">Details</button>
+                        <button class="tab-btn" onclick="switchDetailTab(event, 'tab-origin')">Origin</button>
+                        <button class="tab-btn" onclick="switchDetailTab(event, 'tab-perfect')">Perfect with</button>
+                    </div>
+                    
+                    <div class="tabs-content">
+                        <div id="tab-details" class="tab-pane active">
+                            <p>This wine originates from Armenia, a country with one of the oldest winemaking traditions in the world. It is produced from carefully selected local grapes grown in natural conditions. The wine is created by students of the <strong>Mkhitar Sebastatsi Educational Complex</strong> as part of their practical learning process, combining tradition, knowledge, and respect for nature.</p>
+                        </div>
+                        <div id="tab-origin" class="tab-pane">
+                            <p>Produced in the beautiful vineyards of the Ararat valley and Vayots Dzor regions, Armenia. Crafted locally by youth participating in secondary education agricultural initiatives.</p>
+                        </div>
+                        <div id="tab-perfect" class="tab-pane">
+                            <p>Pairs beautifully with traditional Armenian cheeses, roasted red meats, lamb, and robust savory appetizers.</p>
+                        </div>
+                    </div>
+
+                    <div class="order-controls-box">
+                        <div class="price-and-action">
+                            <div class="price-display">
+                                <span id="detail-price" class="current-price">$44.00</span>
+                            </div>
+                            <button class="btn-order-now" onclick="showOrderPopup()">ADD TO CART <i class="fa-solid fa-cart-shopping" style="margin-left: 8px;"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WINES -->
+        <section id="section-wines" class="site-section">
+            <div class="wines-hero">
+                <div class="wines-hero-text">
+                    <h1>Our Wine.<br>Our Story.</h1>
+                    <p>Sebastatsi Wine is more than a drink. It's a story of tradition, education, and passion brought to life by the next generation.</p>
+                </div>
+                <div class="wines-hero-img-box">
+                    <img src="./images/heroimg — .png" alt="Our Story Wine" class="wines-hero-img">
+                </div>
+            </div>
+
+            <div class="process-section">
+                <h2 class="section-heading">How Our Wine is Made</h2>
+                <div class="process-steps-flow">
+                    <div class="step-card">
+                        <span class="step-number">01</span>
+                        <h4 class="step-title">Vineyard Care</h4>
+                        <p class="step-desc">We grow Armenian grape varieties with care and patience.</p>
+                    </div>
+                    <div class="step-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                    
+                    <div class="step-card">
+                        <span class="step-number">02</span>
+                        <h4 class="step-title">Hand Harvesting</h4>
+                        <p class="step-desc">Grapes are handpicked at the perfect moment of ripeness.</p>
+                    </div>
+                    <div class="step-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+
+                    <div class="step-card">
+                        <span class="step-number">03</span>
+                        <h4 class="step-title">Winemaking</h4>
+                        <p class="step-desc">Fermentation and aging are carefully managed to bring out the best in every grape.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="about-school-block">
+                <div class="school-image-side">
+                    <img src="./images/MSKH school photo.png" alt="Mkhitar Sebastatsi Complex" class="school-building-img">
+                </div>
+                <div class="school-text-side">
+                    <h2>About Our School</h2>
+                    <div class="accent-line"></div>
+                    <p>Sebastatsi Wine is produced by students of the Mkhitar Sebastatsi Educational Complex.</p>
+                    <p>Our school has a long history of academic excellence and practical education. Through the winemaking project, students gain real-world experience in viticulture, winemaking, marketing, and teamwork.</p>
+                    <p>This project is not only about making wine — it's about building skills, confidence, and a love for our culture and heritage.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT US -->
+        <section id="section-about" class="site-section">
+            <div class="about-new-layout">
+                <div class="about-main-content">
+                    <div class="about-left-text">
+                        <h1 class="about-title">About Us</h1>
+                        <p class="about-description">
+                            MSKH Wine is a student educational project of the Mkhitar Sebastatsi Educational Complex, created to preserve winemaking traditions and promote Armenian wine culture.
+                        </p>
+                        <p class="about-description">
+                            Our mission is to combine knowledge, practice, and respect for nature to produce high-quality wines.
+                        </p>
+                    </div>
+                    <div class="about-right-visual">
+                        <div class="about-circle-graphic">
+                            <img src="./images/About us mskh wine.png" alt="Grapes Concept" class="about-grapes-overlay">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about-values-grid">
+                    <div class="value-item-box">
+                        <div class="value-icon-outer">
+                            <i class="fa-solid fa-gavel"></i>
+                        </div>
+                        <h4>Tradition</h4>
+                        <p>We preserve ancient winemaking traditions.</p>
+                    </div>
+                    <div class="value-item-box">
+                        <div class="value-icon-outer">
+                            <i class="fa-solid fa-book-open"></i>
+                        </div>
+                        <h4>Education</h4>
+                        <p>Students learn by doing, in real conditions.</p>
+                    </div>
+                    <div class="value-item-box">
+                        <div class="value-icon-outer">
+                            <i class="fa-solid fa-leaf"></i>
+                        </div>
+                        <h4>Nature</h4>
+                        <p>We respect nature and work sustainably.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT US -->
+    <section id="section-contact" class="site-section">
+        <div class="contact-page-container" style="display: flex; gap: 30px; align-items: stretch;">
+            
+            <div style="flex: 0 0 350px; display: flex; flex-direction: column; gap: 20px;">
+                <h1 class="contact-main-title">Contact Us</h1>
+                <p class="contact-subtitle">Got a question or need assistance?<br>We're just a call away.</p>
+                
+                <div class="contact-card-box" style="margin-top: 0;">
+                    <div class="contact-phone-icon-circle"><i class="fa-solid fa-phone"></i></div>
+                    <div><p>Call Us <br> <a href="tel:+37410740022" class="contact-phone-number">+374 10 740022</a></p></div>
+                </div>
+                
+                <div class="contact-card-box" style="margin-top: 0;">
+                    <div class="contact-phone-icon-circle" style="background: #111111;"><i class="fa-solid fa-location-dot"></i></div>
+                    <p>92/1 Andraniki St, <br> Yerevan, Armenia</p>
+                </div>
+                
+                <div class="contact-card-box" style="margin-top: 0;">
+                    <div class="contact-phone-icon-circle" style="background: #ff7a59;"><i class="fa-solid fa-envelope"></i></div>
+                    <p>Email us at: <br> <a href="mailto:gini.mskh@gmail.com" style="color: #ff7a59; font-weight: 700;">gini.mskh@gmail.com</a></p>
+                </div>
+            </div>
+
+            <div class="contact-map-container" style="flex: 1; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                <iframe 
+                    src="https://maps.google.com/maps?q=MSKH%20college,%20Yerevan&t=&z=17&ie=UTF8&iwloc=&output=embed" 
+                    width="100%" 
+                    height="100%" 
+                    style="border:0; min-height: 350px;" 
+                    allowfullscreen="" 
+                    loading="eager">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-contact-info">
+                <span>Contact us: </span>
+                <a href="tel:+37411123456" class="footer-phone">+374 10 740022</a>
+            </div>
+            <div class="footer-socials">
+                <a href="https://www.facebook.com/ginudproc/?locale=hy_AM" target="_blank" class="social-link"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/mkhitar_sebastatsi" target="_blank" class="social-link"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://mskh.am/posts/post/_id/68b97fdbba68ef9d84aa4a6f" target="_blank" class="social-link"><i class="fa-solid fa-graduation-cap"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
