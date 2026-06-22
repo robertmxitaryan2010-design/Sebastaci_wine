@@ -32,6 +32,24 @@
             
                 <a href="#" id="nav-contact" class="nav-link" onclick="document.querySelectorAll('.main-nav .nav-link').forEach(l=>l.classList.remove('active')); this.classList.add('active'); navigateTo('contact'); return false;" data-i18n="nav-contact">Contact</a>
             </nav>
+
+            <div class="language-switcher">
+                <button class="lang-toggle" onclick="toggleLanguageMenu()">
+                    <img id="current-flag" src="./images/flags/en.svg" alt="EN" class="flag-icon">
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="lang-dropdown" id="lang-dropdown">
+                    <button class="lang-option" onclick="changeLanguage('en')">
+                        <img src="./images/flags/en.svg" alt="English" class="flag-icon"> English
+                    </button>
+                    <button class="lang-option" onclick="changeLanguage('ru')">
+                        <img src="./images/flags/ru.svg" alt="Русский" class="flag-icon"> Русский
+                    </button>
+                    <button class="lang-option" onclick="changeLanguage('hy')">
+                        <img src="./images/flags/hy.svg" alt="Հայերեն" class="flag-icon"> Հայերեն
+                    </button>
+                </div>
+            </div>
         </div>
     </header>
 
@@ -54,9 +72,9 @@
         <section id="section-home" class="site-section active">
             <div class="hero-container">
                 <div class="hero-text-block">
-                    <h1 class="hero-title">Taste of Armenia</h1>
-                    <p class="hero-subtitle">Discover handcrafted Armenian wines, rich in heritage and tradition.</p>
-                    <button class="btn-primary" onclick="navigateTo('shop')">Explore Our Wines</button>
+                    <h1 class="hero-title" data-i18n="hero-title">Taste of Armenia</h1>
+                    <p class="hero-subtitle" data-i18n="hero-subtitle">Discover handcrafted Armenian wines, rich in heritage and tradition.</p>
+                    <button class="btn-primary" onclick="navigateTo('shop')" data-i18n="btn-explore">Explore Our Wines</button>
                 </div>
                 <div class="hero-image-block">
                     <img src="./images/heroimg — .png" alt="Armenian Wine" class="hero-img">
@@ -67,59 +85,59 @@
         <!-- SHOP (ПОЛНОСТЬЮ БЕЗ СОРТИРОВКИ) -->
         <section id="section-shop" class="site-section">
             <div class="shop-page-title">
-                <h1>Shop</h1>
-                <p>Discover our carefully selected wines.</p>
+                <h1 data-i18n="shop-title">Shop</h1>
+                <p data-i18n="shop-subtitle">Discover our carefully selected wines.</p>
             </div>
             
             <div class="shop-layout">
                 <aside class="shop-sidebar">
                     <div class="filter-group">
-                        <h3 class="filter-title">Categories</h3>
+                        <h3 class="filter-title" data-i18n="filter-categories">Categories</h3>
                         <ul class="category-list">
-                            <li class="category-item active" data-category="all">All Wines</li>
-                            <li class="category-item" data-category="red">Red Wine</li>
-                            <li class="category-item" data-category="white">White Wine</li>
-                            <li class="category-item" data-category="rose">Rosé Wine</li>
+                            <li class="category-item active" data-category="all" data-i18n="filter-all">All Wines</li>
+                            <li class="category-item" data-category="red" data-i18n="filter-red">Red Wine</li>
+                            <li class="category-item" data-category="white" data-i18n="filter-white">White Wine</li>
+                            <li class="category-item" data-category="rose" data-i18n="filter-rose">Rosé Wine</li>
                         </ul>
                     </div>
                 </aside>
 
                 <div class="shop-content">
                     <div class="products-grid" id="wines-grid">
-                        <div class="product-card" data-wine-type="red" data-price="44.00" onclick="openProduct('Red Dry Wine 0.75L', '44.00')">
+                        <div class="product-card" data-wine-type="red" data-price="44.00" data-product-key="product-red-dry-075" onclick="openProduct('product-red-dry-075', '44.00', 'red')">
                             <div class="card-img-wrapper">
                                 <img src="./images/Red Dry wine.png" alt="Red Dry Wine" class="card-bottle-img">
                             </div>
-                            <h4 class="product-name">Red Dry Wine 0.75L</h4>
+                            <h4 class="product-name" data-i18n="product-red-dry-075">Red Dry Wine 0.75L</h4>
                             <div class="product-rating">
                                 <span class="stars">★★★★★</span>
-                                <span class="reviews-count">18 reviews</span>
+                                <span class="reviews-count" data-i18n="reviews-count-18">18 reviews</span>
                             </div>
-                            <div class="product-price">$44.00</div>
+                            <div class="product-price" data-i18n="price-44">$44.00</div>
                         </div>
 
-                        <div class="product-card" data-wine-type="white" data-price="34.00" onclick="openProduct('White Dry Wine 0.75L', '34.00')">
+                        <div class="product-card" data-wine-type="white" data-price="34.00" data-product-key="product-white-dry-075" onclick="openProduct('product-white-dry-075', '34.00', 'white')">
                             <div class="card-img-wrapper">
                                 <img src="./images/White wine.png" alt="White Dry Wine" class="card-bottle-img">
                             </div>
-                            <h4 class="product-name">White Dry Wine 0.75L</h4>
+                            <h4 class="product-name" data-i18n="product-white-dry-075">White Dry Wine 0.75L</h4>
                             <div class="product-rating">
                                 <span class="stars">★★★★★</span>
-                                <span class="reviews-count">12 reviews</span>
+                                <span class="reviews-count" data-i18n="reviews-count-12">12 reviews</span>
                             </div>
-                            <div class="product-price">$34.00</div>
+                            <div class="product-price" data-i18n="price-34">$34.00</div>
                         </div>
 
-                        <div class="product-card" data-wine-type="rose" data-price="29.00" onclick="openProduct('Rosé Wine 0.75L', '29.00')">
+                        <div class="product-card" data-wine-type="rose" data-price="29.00" data-product-key="product-rose-075" onclick="openProduct('product-rose-075', '29.00', 'rose')">
                             <div class="card-img-wrapper">
                                 <img src="./images/Rose Wine.png" alt="Rosé Wine" class="card-bottle-img">
                             </div>
-                            <h4 class="product-name">Rosé Wine 0.75L</h4>
+                            <h4 class="product-name" data-i18n="product-rose-075">Rosé Wine 0.75L</h4>
                             <div class="product-rating">
                                 <span class="stars">★★★★★</span>
-                                <span class="reviews-count">9 reviews</span>
+                                <span class="reviews-count" data-i18n="reviews-count-9">9 reviews</span>
                             </div>
-                            <div class="product-price">$29.00</div>
+                            <div class="product-price" data-i18n="price-29">$29.00</div>
                         </div>
                     </div>
                 </div>
@@ -127,7 +145,7 @@
         </section>
 
         <section id="section-product-detail" class="site-section">
-            <button class="btn-back" onclick="goBack()"><i class="fa-solid fa-arrow-left"></i> Назад</button>
+            <button class="btn-back" onclick="goBack()"><i class="fa-solid fa-arrow-left"></i> <span data-i18n="btn-back">Back</span></button>
 
             <div class="detail-container">
                 <div class="detail-left-side">
@@ -144,20 +162,20 @@
 
                 <div class="detail-right-side">
                     <div class="tabs-header">
-                        <button class="tab-btn active" onclick="switchDetailTab(event, 'tab-details')">Details</button>
-                        <button class="tab-btn" onclick="switchDetailTab(event, 'tab-origin')">Origin</button>
-                        <button class="tab-btn" onclick="switchDetailTab(event, 'tab-perfect')">Perfect with</button>
+                        <button class="tab-btn active" onclick="switchDetailTab(event, 'tab-details')" data-i18n="tab-details">Details</button>
+                        <button class="tab-btn" onclick="switchDetailTab(event, 'tab-origin')" data-i18n="tab-origin">Origin</button>
+                        <button class="tab-btn" onclick="switchDetailTab(event, 'tab-perfect')" data-i18n="tab-perfect">Perfect with</button>
                     </div>
                     
                     <div class="tabs-content">
                         <div id="tab-details" class="tab-pane active">
-                            <p>This wine originates from Armenia, a country with one of the oldest winemaking traditions in the world. It is produced from carefully selected local grapes grown in natural conditions. The wine is created by students of the <strong>Mkhitar Sebastatsi Educational Complex</strong> as part of their practical learning process, combining tradition, knowledge, and respect for nature.</p>
+                            <p data-i18n="detail-desc-text">This wine originates from Armenia, a country with one of the oldest winemaking traditions in the world. It is produced from carefully selected local grapes grown in natural conditions. The wine is created by students of the Mkhitar Sebastatsi Educational Complex as part of their practical learning process, combining tradition, knowledge, and respect for nature.</p>
                         </div>
                         <div id="tab-origin" class="tab-pane">
-                            <p>Produced in the beautiful vineyards of the Ararat valley and Vayots Dzor regions, Armenia. Crafted locally by youth participating in secondary education agricultural initiatives.</p>
+                            <p data-i18n="detail-origin-text">Produced in the beautiful vineyards of the Ararat valley and Vayots Dzor regions, Armenia. Crafted locally by youth participating in secondary education agricultural initiatives.</p>
                         </div>
                         <div id="tab-perfect" class="tab-pane">
-                            <p>Pairs beautifully with traditional Armenian cheeses, roasted red meats, lamb, and robust savory appetizers.</p>
+                            <p data-i18n="detail-perfect-text">Pairs beautifully with traditional Armenian cheeses, roasted red meats, lamb, and robust savory appetizers.</p>
                         </div>
                     </div>
 
@@ -166,7 +184,7 @@
                             <div class="price-display">
                                 <span id="detail-price" class="current-price">$44.00</span>
                             </div>
-                            <button class="btn-order-now" onclick="showOrderPopup()">ADD TO CART <i class="fa-solid fa-cart-shopping" style="margin-left: 8px;"></i></button>
+                            <button class="btn-order-now" onclick="showOrderPopup()"><span data-i18n="btn-add-to-cart">ADD TO CART</span> <i class="fa-solid fa-cart-shopping" style="margin-left: 8px;"></i></button>
                         </div>
                     </div>
                 </div>
@@ -177,8 +195,8 @@
         <section id="section-wines" class="site-section">
             <div class="wines-hero">
                 <div class="wines-hero-text">
-                    <h1>Our Wine.<br>Our Story.</h1>
-                    <p>Sebastatsi Wine is more than a drink. It's a story of tradition, education, and passion brought to life by the next generation.</p>
+                    <h1 data-i18n="wines-story-title">Our Wine.<br>Our Story.</h1>
+                    <p data-i18n="wines-story-desc">Sebastatsi Wine is more than a drink. It's a story of tradition, education, and passion brought to life by the next generation.</p>
                 </div>
                 <div class="wines-hero-img-box">
                     <img src="./images/heroimg — .png" alt="Our Story Wine" class="wines-hero-img">
@@ -186,26 +204,26 @@
             </div>
 
             <div class="process-section">
-                <h2 class="section-heading">How Our Wine is Made</h2>
+                <h2 class="section-heading" data-i18n="process-title">How Our Wine is Made</h2>
                 <div class="process-steps-flow">
                     <div class="step-card">
                         <span class="step-number">01</span>
-                        <h4 class="step-title">Vineyard Care</h4>
-                        <p class="step-desc">We grow Armenian grape varieties with care and patience.</p>
+                        <h4 class="step-title" data-i18n="step1-title">Vineyard Care</h4>
+                        <p class="step-desc" data-i18n="step1-desc">We grow Armenian grape varieties with care and patience.</p>
                     </div>
                     <div class="step-arrow"><i class="fa-solid fa-arrow-right"></i></div>
                     
                     <div class="step-card">
                         <span class="step-number">02</span>
-                        <h4 class="step-title">Hand Harvesting</h4>
-                        <p class="step-desc">Grapes are handpicked at the perfect moment of ripeness.</p>
+                        <h4 class="step-title" data-i18n="step2-title">Hand Harvesting</h4>
+                        <p class="step-desc" data-i18n="step2-desc">Grapes are handpicked at the perfect moment of ripeness.</p>
                     </div>
                     <div class="step-arrow"><i class="fa-solid fa-arrow-right"></i></div>
 
                     <div class="step-card">
                         <span class="step-number">03</span>
-                        <h4 class="step-title">Winemaking</h4>
-                        <p class="step-desc">Fermentation and aging are carefully managed to bring out the best in every grape.</p>
+                        <h4 class="step-title" data-i18n="step3-title">Winemaking</h4>
+                        <p class="step-desc" data-i18n="step3-desc">Fermentation and aging are carefully managed to bring out the best in every grape.</p>
                     </div>
                 </div>
             </div>
@@ -215,11 +233,11 @@
                     <img src="./images/MSKH school photo.png" alt="Mkhitar Sebastatsi Complex" class="school-building-img">
                 </div>
                 <div class="school-text-side">
-                    <h2>About Our School</h2>
+                    <h2 data-i18n="school-title">About Our School</h2>
                     <div class="accent-line"></div>
-                    <p>Sebastatsi Wine is produced by students of the Mkhitar Sebastatsi Educational Complex.</p>
-                    <p>Our school has a long history of academic excellence and practical education. Through the winemaking project, students gain real-world experience in viticulture, winemaking, marketing, and teamwork.</p>
-                    <p>This project is not only about making wine — it's about building skills, confidence, and a love for our culture and heritage.</p>
+                    <p data-i18n="school-p1">Sebastatsi Wine is produced by students of the Mkhitar Sebastatsi Educational Complex.</p>
+                    <p data-i18n="school-p2">Our school has a long history of academic excellence and practical education. Through the winemaking project, students gain real-world experience in viticulture, winemaking, marketing, and teamwork.</p>
+                    <p data-i18n="school-p3">This project is not only about making wine — it's about building skills, confidence, and a love for our culture and heritage.</p>
                 </div>
             </div>
         </section>
@@ -229,11 +247,11 @@
             <div class="about-new-layout">
                 <div class="about-main-content">
                     <div class="about-left-text">
-                        <h1 class="about-title">About Us</h1>
-                        <p class="about-description">
+                        <h1 class="about-title" data-i18n="about-title">About Us</h1>
+                        <p class="about-description" data-i18n="about-main-desc1">
                             MSKH Wine is a student educational project of the Mkhitar Sebastatsi Educational Complex, created to preserve winemaking traditions and promote Armenian wine culture.
                         </p>
-                        <p class="about-description">
+                        <p class="about-description" data-i18n="about-main-desc2">
                             Our mission is to combine knowledge, practice, and respect for nature to produce high-quality wines.
                         </p>
                     </div>
@@ -249,22 +267,22 @@
                         <div class="value-icon-outer">
                             <i class="fa-solid fa-gavel"></i>
                         </div>
-                        <h4>Tradition</h4>
-                        <p>We preserve ancient winemaking traditions.</p>
+                        <h4 data-i18n="value-tradition-title">Tradition</h4>
+                        <p data-i18n="value-tradition-desc">We preserve ancient winemaking traditions.</p>
                     </div>
                     <div class="value-item-box">
                         <div class="value-icon-outer">
                             <i class="fa-solid fa-book-open"></i>
                         </div>
-                        <h4>Education</h4>
-                        <p>Students learn by doing, in real conditions.</p>
+                        <h4 data-i18n="value-edu-title">Education</h4>
+                        <p data-i18n="value-edu-desc">Students learn by doing, in real conditions.</p>
                     </div>
                     <div class="value-item-box">
                         <div class="value-icon-outer">
                             <i class="fa-solid fa-leaf"></i>
                         </div>
-                        <h4>Nature</h4>
-                        <p>We respect nature and work sustainably.</p>
+                        <h4 data-i18n="value-nature-title">Nature</h4>
+                        <p data-i18n="value-nature-desc">We respect nature and work sustainably.</p>
                     </div>
                 </div>
             </div>
@@ -275,22 +293,22 @@
         <div class="contact-page-container" style="display: flex; gap: 30px; align-items: stretch;">
             
             <div style="flex: 0 0 350px; display: flex; flex-direction: column; gap: 20px;">
-                <h1 class="contact-main-title">Contact Us</h1>
-                <p class="contact-subtitle">Got a question or need assistance?<br>We're just a call away.</p>
+                <h1 class="contact-main-title" data-i18n="contact-main-title">Contact Us</h1>
+                <p class="contact-subtitle" data-i18n="contact-subtitle">Got a question or need assistance?<br>We're just a call away.</p>
                 
                 <div class="contact-card-box" style="margin-top: 0;">
                     <div class="contact-phone-icon-circle"><i class="fa-solid fa-phone"></i></div>
-                    <div><p>Call Us <br> <a href="tel:+37410740022" class="contact-phone-number">+374 10 740022</a></p></div>
+                    <div><p data-i18n="contact-call">Call Us <br> <a href="tel:+37410740022" class="contact-phone-number">+374 10 740022</a></p></div>
                 </div>
                 
                 <div class="contact-card-box" style="margin-top: 0;">
                     <div class="contact-phone-icon-circle" style="background: #111111;"><i class="fa-solid fa-location-dot"></i></div>
-                    <p>92/1 Andraniki St, <br> Yerevan, Armenia</p>
+                    <p data-i18n="contact-address">92/1 Andraniki St, <br> Yerevan, Armenia</p>
                 </div>
                 
                 <div class="contact-card-box" style="margin-top: 0;">
                     <div class="contact-phone-icon-circle" style="background: #ff7a59;"><i class="fa-solid fa-envelope"></i></div>
-                    <p>Email us at: <br> <a href="mailto:gini.mskh@gmail.com" style="color: #ff7a59; font-weight: 700;">gini.mskh@gmail.com</a></p>
+                    <p data-i18n="contact-email">Email us at: <br> <a href="mailto:gini.mskh@gmail.com" style="color: #ff7a59; font-weight: 700;">gini.mskh@gmail.com</a></p>
                 </div>
             </div>
 
@@ -312,7 +330,7 @@
     <footer class="site-footer">
         <div class="footer-container">
             <div class="footer-contact-info">
-                <span>Contact us: </span>
+                <span data-i18n="footer-contact-label">Contact us: </span>
                 <a href="tel:+37411123456" class="footer-phone">+374 10 740022</a>
             </div>
             <div class="footer-socials">

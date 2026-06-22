@@ -55,21 +55,29 @@ function goBack() {
 }
 
 // Открытие карточки конкретного вина
-function openProduct(name, price) {
-    document.getElementById('detail-title').innerText = name;
+let currentProductKey = null;
+
+function openProduct(productKey, price, wineType) {
+    currentProductKey = productKey;
+    const detailTitle = document.getElementById('detail-title');
+    if (detailTitle && translations[currentLanguage]?.[productKey]) {
+        detailTitle.textContent = translations[currentLanguage][productKey];
+    } else if (detailTitle) {
+        detailTitle.textContent = productKey;
+    }
+
     document.getElementById('detail-price').innerText = `$${price}`;
     
     const detailImg = document.getElementById('detail-img');
     
-    if (name.includes('Red')) {
+    if (wineType === 'red') {
         detailImg.src = './images/Red wine.jpg';
-    } else if (name.includes('White')) {
+    } else if (wineType === 'white') {
         detailImg.src = './images/White wine.png';
-    } else if (name.includes('Rosé') || name.includes('Rose')) {
+    } else if (wineType === 'rose') {
         detailImg.src = './images/Rose Wine.png';
     }
 
-    // СТРОГО ВОТ ТАК (без WithHistory):
     navigateTo('product-detail');
 }
 
@@ -129,16 +137,85 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-function navigateTo(sectionId) {
-    // 1. Твой существующий код скрытия всех секций
-    document.querySelectorAll('.site-section').forEach(s => s.classList.remove('active'));
-    
-    // 2. Показываем нужную
-    document.getElementById('section-' + sectionId).classList.add('active');
+// ЯЗЫКОВОЙ ПЕРЕКЛЮЧАТЕЛЬ
+let currentLanguage = localStorage.getItem('language') || 'en';
+const translations = {};
 
-    // 3. ПРИНУДИТЕЛЬНОЕ ОБНОВЛЕНИЕ КАРТЫ
-    if (sectionId === 'contact') {
-        const mapFrame = document.querySelector('.contact-map-container iframe');
-        mapFrame.src = mapFrame.src; 
+async function loadTranslations() {
+    try {
+        const response = await fetch('./translations.json');
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const data = await response.json();
+        Object.assign(translations, data);
+        applyLanguage(currentLanguage);
+        updateCurrentFlag(currentLanguage);
+    } catch (error) {
+        console.error('Failed to load translations:', error);
     }
 }
+
+function updateCurrentFlag(lang) {
+    const currentFlagImg = document.getElementById('current-flag');
+    if (currentFlagImg) {
+        currentFlagImg.src = `./images/flags/${lang}.svg`;
+        currentFlagImg.alt = lang.toUpperCase();
+    }
+}
+
+function toggleLanguageMenu() {
+    const dropdown = document.getElementById('lang-dropdown');
+    if (dropdown) {
+        dropdown.classList.toggle('active');
+    }
+}
+
+function changeLanguage(lang) {
+    if (!translations[lang]) return;
+
+    currentLanguage = lang;
+    localStorage.setItem('language', lang);
+    applyLanguage(lang);
+    updateCurrentFlag(lang);
+
+    const dropdown = document.getElementById('lang-dropdown');
+    if (dropdown) {
+        dropdown.classList.remove('active');
+    }
+}
+
+function applyLanguage(lang) {
+    if (!translations[lang]) return;
+
+    document.documentElement.lang = lang;
+
+    document.querySelectorAll('[data-i18n]').forEach(element => {
+        const key = element.getAttribute('data-i18n');
+        const text = translations[lang][key];
+        if (!text) return;
+
+        if (text.includes('<')) {
+            element.innerHTML = text;
+        } else {
+            element.textContent = text;
+        }
+    });
+
+    if (currentProductKey) {
+        const detailTitle = document.getElementById('detail-title');
+        const productName = translations[lang][currentProductKey];
+        if (detailTitle && productName) {
+            detailTitle.textContent = productName;
+        }
+    }
+}
+
+document.addEventListener('click', (e) => {
+    const switcher = document.querySelector('.language-switcher');
+    const dropdown = document.getElementById('lang-dropdown');
+
+    if (switcher && !switcher.contains(e.target) && dropdown) {
+        dropdown.classList.remove('active');
+    }
+});
+
+document.addEventListener('DOMContentLoaded', loadTranslations);
