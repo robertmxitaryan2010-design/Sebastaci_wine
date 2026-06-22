@@ -31,6 +31,22 @@ function navigateTo(sectionId) {
             iframe.src = iframe.src;
         }
     }
+
+    closeMobileNav();
+}
+
+function toggleMobileNav() {
+    const nav = document.getElementById('main-nav');
+    const toggle = document.getElementById('nav-toggle');
+    if (nav) nav.classList.toggle('open');
+    if (toggle) toggle.classList.toggle('active');
+}
+
+function closeMobileNav() {
+    const nav = document.getElementById('main-nav');
+    const toggle = document.getElementById('nav-toggle');
+    if (nav) nav.classList.remove('open');
+    if (toggle) toggle.classList.remove('active');
 }
 
 // Храним историю для кнопки "Назад"
@@ -71,7 +87,7 @@ function openProduct(productKey, price, wineType) {
     const detailImg = document.getElementById('detail-img');
     
     if (wineType === 'red') {
-        detailImg.src = './images/Red wine.jpg';
+        detailImg.src = './images/Red Dry wine.png';
     } else if (wineType === 'white') {
         detailImg.src = './images/White wine.png';
     } else if (wineType === 'rose') {
@@ -219,3 +235,9 @@ document.addEventListener('click', (e) => {
 });
 
 document.addEventListener('DOMContentLoaded', loadTranslations);
+
+window.addEventListener('resize', () => {
+    if (window.innerWidth > 1024) {
+        closeMobileNav();
+    }
+});

@@ -18,7 +18,7 @@
                 <img src="./images/logo — копия.png" alt="MSKH Logo" class="logo-img">
             </a>
         
-            <nav class="main-nav">
+            <nav class="main-nav" id="main-nav">
                 <a href="#" id="nav-home" class="nav-link active" onclick="document.querySelectorAll('.main-nav .nav-link').forEach(l=>l.classList.remove('active')); this.classList.add('active'); navigateTo('home'); return false;" data-i18n="nav-main">Main</a>
                 <a href="#" id="nav-shop" class="nav-link" onclick="document.querySelectorAll('.main-nav .nav-link').forEach(l=>l.classList.remove('active')); this.classList.add('active'); navigateTo('shop'); return false;" data-i18n="nav-shop">Shop</a>
                 <a href="#" id="nav-wines" class="nav-link" onclick="document.querySelectorAll('.main-nav .nav-link').forEach(l=>l.classList.remove('active')); this.classList.add('active'); navigateTo('wines'); return false;" data-i18n="nav-wines">Wines</a>
@@ -33,6 +33,7 @@
                 <a href="#" id="nav-contact" class="nav-link" onclick="document.querySelectorAll('.main-nav .nav-link').forEach(l=>l.classList.remove('active')); this.classList.add('active'); navigateTo('contact'); return false;" data-i18n="nav-contact">Contact</a>
             </nav>
 
+            <div class="header-actions">
             <div class="language-switcher">
                 <button class="lang-toggle" onclick="toggleLanguageMenu()">
                     <img id="current-flag" src="./images/flags/en.svg" alt="EN" class="flag-icon">
@@ -42,13 +43,38 @@
                     <button class="lang-option" onclick="changeLanguage('en')">
                         <img src="./images/flags/en.svg" alt="English" class="flag-icon"> English
                     </button>
-                    <button class="lang-option" onclick="changeLanguage('ru')">
-                        <img src="./images/flags/ru.svg" alt="Русский" class="flag-icon"> Русский
-                    </button>
                     <button class="lang-option" onclick="changeLanguage('hy')">
                         <img src="./images/flags/hy.svg" alt="Հայերեն" class="flag-icon"> Հայերեն
                     </button>
+                    <button class="lang-option" onclick="changeLanguage('ru')">
+                        <img src="./images/flags/ru.svg" alt="Русский" class="flag-icon"> Русский
+                    </button>
+                    <button class="lang-option" onclick="changeLanguage('fr')">
+                        <img src="./images/flags/fr.svg" alt="Français" class="flag-icon"> Français
+                    </button>
+                    <button class="lang-option" onclick="changeLanguage('de')">
+                        <img src="./images/flags/de.svg" alt="Deutsch" class="flag-icon"> Deutsch
+                    </button>
+                    <button class="lang-option" onclick="changeLanguage('es')">
+                        <img src="./images/flags/es.svg" alt="Español" class="flag-icon"> Español
+                    </button>
+                    <button class="lang-option" onclick="changeLanguage('it')">
+                        <img src="./images/flags/it.svg" alt="Italiano" class="flag-icon"> Italiano
+                    </button>
+                    <button class="lang-option" onclick="changeLanguage('tr')">
+                        <img src="./images/flags/tr.svg" alt="Türkçe" class="flag-icon"> Türkçe
+                    </button>
+                    <button class="lang-option" onclick="changeLanguage('ka')">
+                        <img src="./images/flags/ka.svg" alt="ქართული" class="flag-icon"> ქართული
+                    </button>
+                    <button class="lang-option" onclick="changeLanguage('fa')">
+                        <img src="./images/flags/fa.svg" alt="فارسی" class="flag-icon"> فارسی
+                    </button>
                 </div>
+            </div>
+            <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" onclick="toggleMobileNav()">
+                <i class="fa-solid fa-bars"></i>
+            </button>
             </div>
         </div>
     </header>
@@ -290,34 +316,33 @@
 
         <!-- CONTACT US -->
     <section id="section-contact" class="site-section">
-        <div class="contact-page-container" style="display: flex; gap: 30px; align-items: stretch;">
+        <div class="contact-page-container">
             
-            <div style="flex: 0 0 350px; display: flex; flex-direction: column; gap: 20px;">
+            <div class="contact-info-column">
                 <h1 class="contact-main-title" data-i18n="contact-main-title">Contact Us</h1>
                 <p class="contact-subtitle" data-i18n="contact-subtitle">Got a question or need assistance?<br>We're just a call away.</p>
                 
-                <div class="contact-card-box" style="margin-top: 0;">
+                <div class="contact-card-box">
                     <div class="contact-phone-icon-circle"><i class="fa-solid fa-phone"></i></div>
                     <div><p data-i18n="contact-call">Call Us <br> <a href="tel:+37410740022" class="contact-phone-number">+374 10 740022</a></p></div>
                 </div>
                 
-                <div class="contact-card-box" style="margin-top: 0;">
-                    <div class="contact-phone-icon-circle" style="background: #111111;"><i class="fa-solid fa-location-dot"></i></div>
+                <div class="contact-card-box">
+                    <div class="contact-phone-icon-circle contact-icon-dark"><i class="fa-solid fa-location-dot"></i></div>
                     <p data-i18n="contact-address">92/1 Andraniki St, <br> Yerevan, Armenia</p>
                 </div>
                 
-                <div class="contact-card-box" style="margin-top: 0;">
-                    <div class="contact-phone-icon-circle" style="background: #ff7a59;"><i class="fa-solid fa-envelope"></i></div>
+                <div class="contact-card-box">
+                    <div class="contact-phone-icon-circle"><i class="fa-solid fa-envelope"></i></div>
                     <p data-i18n="contact-email">Email us at: <br> <a href="mailto:gini.mskh@gmail.com" style="color: #ff7a59; font-weight: 700;">gini.mskh@gmail.com</a></p>
                 </div>
             </div>
 
-            <div class="contact-map-container" style="flex: 1; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+            <div class="contact-map-container">
                 <iframe 
                     src="https://maps.google.com/maps?q=MSKH%20college,%20Yerevan&t=&z=17&ie=UTF8&iwloc=&output=embed" 
                     width="100%" 
                     height="100%" 
-                    style="border:0; min-height: 350px;" 
                     allowfullscreen="" 
                     loading="eager">
                 </iframe>
